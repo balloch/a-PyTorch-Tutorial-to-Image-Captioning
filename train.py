@@ -280,7 +280,7 @@ def validate(val_loader, encoder, decoder, criterion):
 
             # Keep track of metrics
             losses.update(loss.item(), sum(decode_lengths))
-            top5 = accuracy(scores.DataLoader, targets.data, 5)
+            top5 = accuracy(scores.data.detach(), targets.data.detach(), 5)
             top5accs.update(top5, sum(decode_lengths))
             batch_time.update(time.time() - start)
 
